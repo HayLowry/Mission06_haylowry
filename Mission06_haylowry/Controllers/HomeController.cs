@@ -12,10 +12,12 @@ namespace Mission06_haylowry.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private MoviesContext _moviesContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MoviesContext moviesContext)
         {
             _logger = logger;
+            _moviesContext = moviesContext;
         }
 
         public IActionResult Index()
@@ -37,6 +39,8 @@ namespace Mission06_haylowry.Controllers
         [HttpPost]
         public IActionResult AddMovies(Movie movie)
         {
+            _moviesContext.Add(movie);
+            _moviesContext.SaveChanges();
             return View("MovieReceived", movie); 
         }
 

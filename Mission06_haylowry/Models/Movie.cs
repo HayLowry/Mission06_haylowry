@@ -10,10 +10,10 @@ namespace Mission06_haylowry.Models
     {
         [Key]
         [Required]
-        public int MovieID { get; set; }
+        public int MovieId { get; set; }
         public string cateogry { get; set; }
         public string title { get; set; }
-        public byte year { get; set; }
+        public int year { get; set; }
         public string director { get; set; }
         public string rating { get; set; }
 
